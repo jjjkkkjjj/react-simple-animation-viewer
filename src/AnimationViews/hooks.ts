@@ -24,12 +24,12 @@ export const useAnimationViewsAdmin = (
   children: Array<React.ReactElement<AnimationViewProps>>,
 ) => {
   // Set the first component
-  const top_component = children.filter(
+  const topComponent = children.filter(
     (c: React.ReactElement<AnimationViewProps>) => {
       return c.props.isRoot;
     },
   );
-  if (top_component.length !== 1) {
+  if (topComponent.length !== 1) {
     throw new Error('You should set Only one isRoot props in `Content`');
   }
   const _components = Object.fromEntries(
@@ -57,7 +57,7 @@ export const useAnimationViewsAdmin = (
 
   // 初回レンダリングでは，ルート画面を表示コンポーネントに設定
   React.useEffect(() => {
-    setShownComponents(value, _components, top_component[0]);
+    setShownComponents(value, _components, topComponent[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

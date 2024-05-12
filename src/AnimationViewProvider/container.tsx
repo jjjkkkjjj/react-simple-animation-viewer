@@ -4,7 +4,7 @@ import {
   AnimationViewProviderContainerContainerProps,
 } from './presenter';
 import {
-  AnimationViewProviderContainerContext,
+  AnimationViewProviderAdminContext,
   useAnimationViewProviderAdmin,
 } from './hooks';
 
@@ -29,7 +29,7 @@ const AnimationViewProviderContainerContainer = (
   } = useAnimationViewProviderAdmin();
 
   return (
-    <AnimationViewProviderContainerContext.Provider
+    <AnimationViewProviderAdminContext.Provider
       value={{
         setShownComponents,
         switcher,
@@ -48,7 +48,7 @@ const AnimationViewProviderContainerContainer = (
       }}
     >
       <AnimationViewProviderContainer {...props} />
-    </AnimationViewProviderContainerContext.Provider>
+    </AnimationViewProviderAdminContext.Provider>
   );
 };
 

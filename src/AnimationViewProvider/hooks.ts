@@ -108,11 +108,11 @@ export const styleList = {
   } as React.CSSProperties,
 };
 
-export const AnimationViewProviderContainerContext = React.createContext(
-  {} as AnimationViewProviderContainerContextProps,
+export const AnimationViewProviderAdminContext = React.createContext(
+  {} as AnimationViewProviderAdminContextProps,
 );
 
-export interface AnimationViewProviderContainerContextProps {
+export interface AnimationViewProviderAdminContextProps {
   /** The function of setting the shown components */
   setShownComponents: (
     _value: string,
@@ -122,7 +122,7 @@ export interface AnimationViewProviderContainerContextProps {
         string | React.JSXElementConstructor<any>
       >;
     },
-    _top_component: ShownComponentType,
+    _topComponent: ShownComponentType,
   ) => void;
   /** The effect will be applied when this value is changed. */
   switcher: boolean;
@@ -156,7 +156,7 @@ export interface AnimationViewProviderContainerContextProps {
  * The hooks of AnimationView
  */
 export const useAnimationViewProvider = () => {
-  return React.useContext(AnimationViewProviderContainerContext);
+  return React.useContext(AnimationViewProviderAdminContext);
 };
 
 /**
@@ -239,13 +239,13 @@ export const useAnimationViewProviderAdmin = () => {
         string | React.JSXElementConstructor<any>
       >;
     },
-    top_component: ShownComponentType,
+    topComponent: ShownComponentType,
   ) => {
     setSwitcher(true);
-    setInComponent(top_component);
+    setInComponent(topComponent);
     setShownComponentsMaster({
       ...shownComponentsMaster,
-      [value]: [{ component: top_component, scrollTop: 0 }],
+      [value]: [{ component: topComponent, scrollTop: 0 }],
     });
     setComponentsMaster({ ...componentsMaster, [value]: newComponents });
     setCurrentValue(value);

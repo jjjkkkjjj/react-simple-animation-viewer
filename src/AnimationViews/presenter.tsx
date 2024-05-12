@@ -5,6 +5,9 @@ import { AnimationViewProps } from '../AnimationView';
 
 export const AnimationViews = (props: AnimationViewsProps) => {
   const {
+    inContainerStyle,
+    outContainerStyle,
+    timeout,
     switcher,
     inComponent,
     inStyle,
@@ -22,7 +25,7 @@ export const AnimationViews = (props: AnimationViewsProps) => {
     <>
       <CSSTransition
         in={switcher}
-        timeout={300}
+        timeout={timeout ?? 300}
         //onEnter={() => onTransit?.(styleType)} // calling twice
         onEntering={() => onTransit?.(styleType)}
         onEntered={() => onTransit?.(styleType)}
@@ -32,10 +35,10 @@ export const AnimationViews = (props: AnimationViewsProps) => {
       >
         <div>
           <div style={inStyle}>
-            <div style={{ minWidth: '100vw' }}>{inComponent}</div>
+            <div style={inContainerStyle}>{inComponent}</div>
           </div>
           <div ref={centerRef} style={outStyle}>
-            <div style={{ minWidth: '100vw' }}>{outComponent}</div>
+            <div style={outContainerStyle}>{outComponent}</div>
           </div>
         </div>
       </CSSTransition>
@@ -52,18 +55,36 @@ export interface ShownComponentManagementType {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AnimationViewsContainerProps {
-  children: Array<React.ReactElement<AnimationViewProps>>;
+  /** The Animation View component(s) */
+  children:
+    | Array<React.ReactElement<AnimationViewProps>>
+    | React.ReactElement<AnimationViewProps>;
+  /** The unique value to manage the another animation views */
   value: string;
+  /** The style to be applied to the inComponent */
+  inContainerStyle?: React.CSSProperties;
+  /** The style to be applied to the outComponent */
+  outContainerStyle?: React.CSSProperties;
+  /** The time for animation (ms). Default to 300 */
+  timeout?: number;
+  /** The event handler on changing the view */
   onChangeViewValues?: (_value: string | null) => void;
 }
 
 export interface AnimationViewsProps extends AnimationViewsContainerProps {
   switcher: boolean;
+  /** The component entered by animation */
   inComponent: ShownComponentType | null;
+  /** The style to be applied to the inComponent */
   inStyle: React.CSSProperties;
+  /** The component outed by animation */
   outComponent: ShownComponentType | null;
+  /** The style to be applied to the outComponent */
   outStyle: React.CSSProperties;
+  /** The current style */
   styleType: string;
+  /** The ref for scroll. But not effect currently. */
   centerRef: React.RefObject<HTMLDivElement>;
+  /** The event handler on transiting the view */
   onTransit?: (_type: string) => void;
 }
