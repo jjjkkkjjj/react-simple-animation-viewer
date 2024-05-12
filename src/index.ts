@@ -1,4 +1,4 @@
-export { AnimationViewProvider } from './AnimationViewProvider'
+export { AnimationViewProvider } from './AnimationViewProvider';
 export {
   AnimationViews,
   type AnimationViewerProps,

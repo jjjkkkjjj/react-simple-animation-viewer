@@ -8,7 +8,6 @@ import {
   useAnimationViewProviderAdmin,
 } from './hooks';
 
-
 const AnimationViewProviderContainerContainer = (
   props: AnimationViewProviderContainerContainerProps,
 ) => {
@@ -48,7 +47,7 @@ const AnimationViewProviderContainerContainer = (
         transition,
       }}
     >
-        <AnimationViewProviderContainer {...props} />
+      <AnimationViewProviderContainer {...props} />
     </AnimationViewProviderContainerContext.Provider>
   );
 };

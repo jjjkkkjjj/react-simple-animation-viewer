@@ -1,7 +1,12 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import { AnimationViewProvider,  AnimationViews, AnimationView, useAnimationViewer } from '../src';
+import {
+  AnimationViewProvider,
+  AnimationViews,
+  AnimationView,
+  useAnimationViewer,
+} from '../src';
 import { Button } from './Button';
 import './button.css';
 
@@ -17,34 +22,70 @@ const Story: StoryFn<typeof AnimationViews> = (args) => {
   return (
     <AnimationViewProvider>
       <AnimationViews {...args} value="sample">
-        <AnimationView isRoot value={'top'}>
+        <AnimationView
+          isRoot
+          value={'top'}
+          containerStyle={{
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'green',
+          }}
+        >
           <Top />
         </AnimationView>
-        <AnimationView value={'second'}>
+        <AnimationView
+          value={'second'}
+          containerStyle={{
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'blue',
+          }}
+        >
           <Second />
         </AnimationView>
-        <AnimationView value={'third'}>
+        <AnimationView
+          value={'third'}
+          containerStyle={{
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'red',
+          }}
+        >
           <Third />
         </AnimationView>
-        <AnimationView value={'fourth'}>
+        <AnimationView
+          value={'fourth'}
+          containerStyle={{
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'black',
+          }}
+        >
           <Fourth />
         </AnimationView>
       </AnimationViews>
     </AnimationViewProvider>
-    
   );
 };
 
 const Top = () => {
   const { forwardView } = useAnimationViewer();
-  return <Button primary onClick={() => forwardView('second')}>second</Button>;
+  return (
+    <Button primary onClick={() => forwardView('second')}>
+      second
+    </Button>
+  );
 };
 const Second = () => {
   const { forwardView, backwardView } = useAnimationViewer();
   return (
     <>
-      <Button primary onClick={() => backwardView()}>back</Button>
-      <Button primary onClick={() => forwardView('third')}>third</Button>
+      <Button primary onClick={() => backwardView()}>
+        back
+      </Button>
+      <Button primary onClick={() => forwardView('third')}>
+        third
+      </Button>
     </>
   );
 };
@@ -53,15 +94,23 @@ const Third = () => {
   return (
     <>
       <div style={{ height: '50vh' }} />
-      <Button primary onClick={() => backwardView()}>back</Button>
-      <Button primary onClick={() => forwardView('fourth')}>fourth</Button>
+      <Button primary onClick={() => backwardView()}>
+        back
+      </Button>
+      <Button primary onClick={() => forwardView('fourth')}>
+        fourth
+      </Button>
       <div style={{ height: '100vh' }} />
     </>
   );
 };
 const Fourth = () => {
   const { backwardView } = useAnimationViewer();
-  return <Button primary onClick={() => backwardView()}>back</Button>;
+  return (
+    <Button primary onClick={() => backwardView()}>
+      back
+    </Button>
+  );
 };
 
 export const FirstStory = Story.bind({});
