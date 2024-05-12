@@ -2,7 +2,7 @@
 
 The very simple animation viewer in React.
 
-![demo](./assets/demo.gif)
+![demo](./assets/demo.gif?raw=true)
 
 ## Installation
 
