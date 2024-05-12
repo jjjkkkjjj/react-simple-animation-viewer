@@ -21,10 +21,13 @@ export const useAnimationViewer = () => {
  */
 export const useAnimationViewsAdmin = (
   value: string,
-  children: Array<React.ReactElement<AnimationViewProps>>,
+  children:
+    | Array<React.ReactElement<AnimationViewProps>>
+    | React.ReactElement<AnimationViewProps>,
 ) => {
+  const _children = Array.isArray(children) ? children : [children];
   // Set the first component
-  const topComponent = children.filter(
+  const topComponent = _children.filter(
     (c: React.ReactElement<AnimationViewProps>) => {
       return c.props.isRoot;
     },
@@ -33,7 +36,7 @@ export const useAnimationViewsAdmin = (
     throw new Error('You should set Only one isRoot props in `Content`');
   }
   const _components = Object.fromEntries(
-    children.map((c: React.ReactElement<AnimationViewProps>) => [
+    _children.map((c: React.ReactElement<AnimationViewProps>) => [
       c.props.value,
       c,
     ]),
