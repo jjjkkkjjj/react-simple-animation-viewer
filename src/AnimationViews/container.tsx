@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { AnimationViews, AnimationViewsContainerProps } from './presenter';
-import { useAnimationViews, AnimationViewerContext } from './hooks';
+import { useAnimationViewsAdmin, AnimationViewerContext } from './hooks';
 
 /**
  * AnimationViewをこれで囲む
@@ -20,7 +20,7 @@ const AnimationViewsContainer = (props: AnimationViewsContainerProps) => {
     forwardView,
     backwardView,
     transition,
-  } = useAnimationViews(value, props.children);
+  } = useAnimationViewsAdmin(value, props.children);
 
   // 管理値が変更された場合
   React.useEffect(() => {

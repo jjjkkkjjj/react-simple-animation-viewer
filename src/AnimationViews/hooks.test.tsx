@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
 import { AnimationView } from '../AnimationView';
-import { useAnimationViews } from './hooks';
+import { useAnimationViewsAdmin } from './hooks';
 
 const mockSetShownComponents = jest.fn();
 jest.mock('../AnimationViewProviderContainer/hooks', () => ({
@@ -13,7 +13,7 @@ jest.mock('../AnimationViewProviderContainer/hooks', () => ({
 describe('Hooks Test', () => {
   test('Iitial rendering', () => {
     renderHook(() =>
-      useAnimationViews('test-anim-views', [
+      useAnimationViewsAdmin('test-anim-views', [
         <AnimationView key="first" value={'first'}>
           <span>first</span>
         </AnimationView>,

@@ -6,11 +6,11 @@ export const AnimationView = (props: AnimationViewProps) => {
 };
 
 export interface AnimationViewContainerProps {
-  /** 表示させるコンポーネント */
+  /** The component to be shown */
   children: React.ReactNode;
-  /** 管理値 */
+  /** The unique value to manage the view */
   value: string;
-  /** ルート画面かどうか */
+  /** Whether to be root (top) view or not. This parameter must be true in only one view. */
   isRoot?: boolean;
 }
 

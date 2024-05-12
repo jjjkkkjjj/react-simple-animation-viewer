@@ -8,7 +8,7 @@ export const AnimationViewerContext = React.createContext(
 );
 
 /**
- * AnimationViewerのHooks
+ * The hooks of AnimationViewer
  */
 export const useAnimationViewer = () => {
   return React.useContext(AnimationViewerContext);
@@ -19,7 +19,7 @@ export const useAnimationViewer = () => {
  * @param value 管理値
  * @param children AnimationViewの配列
  */
-export const useAnimationViews = (
+export const useAnimationViewsAdmin = (
   value: string,
   children: Array<React.ReactElement<AnimationViewProps>>,
 ) => {
@@ -78,7 +78,10 @@ export const useAnimationViews = (
 };
 
 export interface AnimationViewerContextProps {
+  /** The view's unique value */
   viewValue: string | null;
+  /** The function to forward (left to right) the view */
   forwardView: (_value: string) => void;
+  /** The function to backward (right to left) the view */
   backwardView: () => void;
 }

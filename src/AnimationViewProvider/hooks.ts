@@ -113,7 +113,7 @@ export const AnimationViewProviderContainerContext = React.createContext(
 );
 
 export interface AnimationViewProviderContainerContextProps {
-  /** 表示コンポーネントをセットする関数 */
+  /** The function of setting the shown components */
   setShownComponents: (
     _value: string,
     _newComponents: {
@@ -124,36 +124,36 @@ export interface AnimationViewProviderContainerContextProps {
     },
     _top_component: ShownComponentType,
   ) => void;
-  /** 表示画面を変更する際に値が切り替わることで，副作用が効く */
+  /** The effect will be applied when this value is changed. */
   switcher: boolean;
-  /** 表示画面の管理値 */
+  /** The view's value */
   viewValue: string | null;
-  /** 管理下にある表示コンポーネント */
+  /** The shown components to be managed */
   shownComponents: Array<ShownComponentManagementType>;
-  /** Animationで入ってくるコンポーネント */
+  /** The component entered by animation */
   inComponent: ShownComponentType | null;
-  /** Animationで入ってくるコンポーネントのスタイル */
+  /** The style to be applied to the inComponent */
   inStyle: React.CSSProperties;
-  /** Animationで出ていくコンポーネント */
+  /** The component outed by animation */
   outComponent: ShownComponentType | null;
-  /** Animationで出ていくコンポーネントのスタイル */
+  /** The style to be applied to the outComponent */
   outStyle: React.CSSProperties;
-  /** 現在のスタイル */
+  /** The current style */
   styleType: string;
-  /** スクロール管理用のRef．ただし，現状うまくいっていない． */
+  /** The ref for scroll. But not effect currently. */
   centerRef: React.RefObject<HTMLDivElement>;
-  /** 画面を新たに追加．左から右へアニメーション． */
+  /** The function to forward (left to right) the view */
   forwardView: (_newViewValue: string) => void;
-  /** 画面を前のものに戻す．右から左へアニメーション． */
+  /** The function to backward (right to left) the view */
   backwardView: () => void;
-  /** 画面を閉じる */
+  /** The function to close the view */
   closeView: () => void;
-  /** 画面遷移処理関数． */
+  /** The function for view transition */
   transition: (_type: string) => void;
 }
 
 /**
- * AnimationViewのHooks．
+ * The hooks of AnimationView
  */
 export const useAnimationViewProvider = () => {
   return React.useContext(AnimationViewProviderContainerContext);

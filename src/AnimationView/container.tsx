@@ -3,7 +3,7 @@ import { AnimationView, AnimationViewContainerProps } from './presenter';
 import { useAnimationView } from './hooks';
 
 /**
- * アニメーション管理したいDOMをこれで囲む
+ * Use this component when you want to animate view
  */
 const AnimationViewContainer = (props: AnimationViewContainerProps) => {
   useAnimationView();
