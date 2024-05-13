@@ -1,8 +1,9 @@
 {
   "name": "react-simple-animation-viewer",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
-  "main": "dist/index.cjs.js",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -37,6 +38,8 @@
     "@storybook/react": "^8.0.10",
     "@storybook/react-webpack5": "^8.0.10",
     "@storybook/test": "^8.0.10",
+    "@testing-library/react": "^15.0.7",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",

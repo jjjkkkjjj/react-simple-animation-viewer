@@ -408,3 +408,26 @@ export const useAnimationViewProviderAdmin = () => {
     transition,
   };
 };
+
+export const AnimationViewerContext = React.createContext(
+  {} as AnimationViewerContextProps,
+);
+
+export interface AnimationViewerContextProps {
+  /** The view's unique value */
+  viewValue: string | null;
+  /** The function to forward (left to right) the view */
+  forwardView: (_value: string) => void;
+  /** The function to backward (right to left) the view */
+  backwardView: () => void;
+  /** The function to close the view */
+  closeView: () => void;
+}
+
+
+/**
+ * The hooks of AnimationViewer
+ */
+export const useAnimationViewer = () => {
+  return React.useContext(AnimationViewerContext);
+};

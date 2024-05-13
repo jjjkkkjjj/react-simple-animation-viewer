@@ -3,21 +3,10 @@ import React from 'react';
 import { AnimationViewProps } from '../AnimationView';
 import { useAnimationViewProvider } from '../AnimationViewProvider/hooks';
 
-export const AnimationViewerContext = React.createContext(
-  {} as AnimationViewerContextProps,
-);
-
 /**
- * The hooks of AnimationViewer
- */
-export const useAnimationViewer = () => {
-  return React.useContext(AnimationViewerContext);
-};
-
-/**
- * AnimationViewを管理するHooks
- * @param value 管理値
- * @param children AnimationViewの配列
+ * The hooks of AnimationViews
+ * @param value The unique value
+ * @param children The array of AnimationView component
  */
 export const useAnimationViewsAdmin = (
   value: string,
@@ -79,12 +68,3 @@ export const useAnimationViewsAdmin = (
     transition,
   };
 };
-
-export interface AnimationViewerContextProps {
-  /** The view's unique value */
-  viewValue: string | null;
-  /** The function to forward (left to right) the view */
-  forwardView: (_value: string) => void;
-  /** The function to backward (right to left) the view */
-  backwardView: () => void;
-}

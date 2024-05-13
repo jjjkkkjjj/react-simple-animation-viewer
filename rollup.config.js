@@ -8,21 +8,16 @@ const autoprefixer = require('autoprefixer');
 
 // import tsConfig from './tsconfig.json';
 
-const conf = {
+const conf = [
+  {
     input: 'src/index.ts',
     output: [
       {
-        file: `dist/index.cjs.js`,
+        dir: `dist/commonjs`,
         format: 'cjs',
         exports: 'named',
         sourcemap: true
       },
-      // {
-      //   file: `dist/index.d.js`,
-      //   format: 'es',
-      //   exports: 'named',
-      //   sourcemap: true
-      // },
     ],
     // this externelizes react to prevent rollup from compiling it
     external: ["react", /@babel\/runtime/],
@@ -47,13 +42,55 @@ const conf = {
         typescript({
             tsconfigOverride: {
                 compilerOptions: {
-                    module: "ESNext"
+                  declarationDir: "dist/commonjs"
                 },
             },
             // target: 'es2016',
             exclude: ['./src/**/*.test.ts', './src/**/*.test.tsx']
         })
     ],
-}
+  },
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        dir: `dist/es`,
+        format: 'es',
+        exports: 'named',
+        sourcemap: true
+      },
+    ],
+    // this externelizes react to prevent rollup from compiling it
+    external: ["react", /@babel\/runtime/],
+    plugins: [
+        // these are babel comfigurations
+        babel({
+            exclude: 'node_modules/**',
+            plugins: ['@babel/transform-runtime'],
+            babelHelpers: 'runtime'
+        }),
+        // this adds sourcemaps
+        sourcemaps(),
+        del({targets:'dist/es/*'}),
+        // this adds support for styles
+        styles({
+            postcss: {
+                plugins: [
+                    autoprefixer()
+                ]
+            }
+        }),
+        typescript({
+            tsconfigOverride: {
+                compilerOptions: {
+                  declarationDir: "dist/es"
+                },
+            },
+            // target: 'es2016',
+            exclude: ['./src/**/*.test.ts', './src/**/*.test.tsx']
+        })
+    ],
+  },
+]
 
 export default conf;

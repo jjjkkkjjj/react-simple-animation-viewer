@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { AnimationViews, AnimationViewsContainerProps } from './presenter';
-import { useAnimationViewsAdmin, AnimationViewerContext } from './hooks';
+import { useAnimationViewsAdmin } from './hooks';
 
 /**
  * AnimationViewをこれで囲む
@@ -17,8 +17,6 @@ const AnimationViewsContainer = (props: AnimationViewsContainerProps) => {
     outStyle,
     styleType,
     centerRef,
-    forwardView,
-    backwardView,
     transition,
   } = useAnimationViewsAdmin(value, props.children);
 
@@ -28,25 +26,17 @@ const AnimationViewsContainer = (props: AnimationViewsContainerProps) => {
   }, [onChangeViewValues, viewValue]);
 
   return (
-    <AnimationViewerContext.Provider
-      value={{
-        viewValue,
-        forwardView,
-        backwardView,
-      }}
-    >
-      <AnimationViews
-        {...props}
-        switcher={switcher}
-        inComponent={inComponent}
-        inStyle={inStyle}
-        outComponent={outComponent}
-        outStyle={outStyle}
-        styleType={styleType}
-        centerRef={centerRef}
-        onTransit={transition}
-      />
-    </AnimationViewerContext.Provider>
+    <AnimationViews
+      {...props}
+      switcher={switcher}
+      inComponent={inComponent}
+      inStyle={inStyle}
+      outComponent={outComponent}
+      outStyle={outStyle}
+      styleType={styleType}
+      centerRef={centerRef}
+      onTransit={transition}
+    />
   );
 };
 

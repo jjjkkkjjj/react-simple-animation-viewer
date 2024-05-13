@@ -1,7 +1,7 @@
-export { AnimationViewProvider } from './AnimationViewProvider';
 export {
-  AnimationViews, AnimationViewsProps,
+  AnimationViewProvider,
   type AnimationViewerProps,
   useAnimationViewer,
-} from './AnimationViews';
+} from './AnimationViewProvider';
+export { AnimationViews, AnimationViewsProps } from './AnimationViews';
 export { AnimationView, AnimationViewProps } from './AnimationView';
