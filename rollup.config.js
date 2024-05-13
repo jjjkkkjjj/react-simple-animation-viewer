@@ -10,10 +10,20 @@ const autoprefixer = require('autoprefixer');
 
 const conf = {
     input: 'src/index.ts',
-    output: {
+    output: [
+      {
         file: `dist/index.cjs.js`,
-        format: 'cjs'
-    },
+        format: 'cjs',
+        exports: 'named',
+        sourcemap: true
+      },
+      // {
+      //   file: `dist/index.d.js`,
+      //   format: 'es',
+      //   exports: 'named',
+      //   sourcemap: true
+      // },
+    ],
     // this externelizes react to prevent rollup from compiling it
     external: ["react", /@babel\/runtime/],
     plugins: [

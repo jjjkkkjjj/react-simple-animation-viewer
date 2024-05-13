@@ -25,3 +25,8 @@ stories
 
 .vscode
 assets
+
+.prettierrc
+.eslintrc
+tsconfig.eslint.json
+tsconfig.json
