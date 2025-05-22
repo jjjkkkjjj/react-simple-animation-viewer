@@ -24,6 +24,7 @@ export const AnimationViews = (props: AnimationViewsProps) => {
   return (
     <>
       <CSSTransition
+        nodeRef={centerRef} // https://github.com/reactjs/react-transition-group/issues/668#issuecomment-695162879
         in={switcher}
         timeout={timeout ?? 300}
         //onEnter={() => onTransit?.(styleType)} // calling twice

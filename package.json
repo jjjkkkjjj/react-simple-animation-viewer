@@ -1,9 +1,21 @@
 {
   "name": "react-simple-animation-viewer",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/es/index.d.ts",
+        "default": "./dist/es/index.js"
+      },
+      "require": {
+        "types": "./dist/es/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    }
+  },
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1",
